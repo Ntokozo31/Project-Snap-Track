@@ -1,0 +1,174 @@
+body {
+    background-color: white;
+}
+
+@media only screen and (max-width: 768) {
+    #head {
+        transform: none;
+        margin-top: 0;
+        width: 90%;
+        padding: 10px;
+    }
+}
+
+#head .Intro {
+    transform: none;
+    margin-left: 0;
+}
+
+#head {
+    transform: translateX(200px);
+    margin-top: 200px;
+}
+
+.chooseMe-container {
+    margin-top: 20px;
+    font-size: medium;
+}
+
+p {
+    font-size: large;
+}
+
+ol.useMe {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+}
+
+#How-to-use {
+    font-size: larger;
+    transform: translateX(100px);
+    margin-bottom: 120px;
+}
+
+.find-questions {
+    transform: translateX(400px);
+    font-size: larger;
+}
+
+.faq {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.faq-item {
+    width: 100%;
+    transform: none;
+}
+
+.faq-item:hover {
+    background-color: black;
+    color: white;
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+}
+
+.see-more li {
+    float: right;
+    width: 100px;
+    list-style: none;
+    transform: translateY(-169px);
+}
+
+.Contact {
+    margin: 0;
+    transform: none;
+    
+}
+
+
+#Location-Btn {
+    transform: none;
+    margin-top: 20px;
+}
+
+#Location-Btn .locate {
+    transform: translateX(340px);
+}
+
+.locate {
+    transform: none;
+    margin-left: 0;
+    padding: 10px;
+    font-size: small;
+}
+
+#head p {
+    color: grey;
+}
+
+.locate:hover {
+    background-color: black;
+    color: white;
+}
+
+.images,
+.My-images,
+.image-01,
+.imageLp {
+    transform: none;
+    margin: 0, auto;
+}
+
+#head {
+    border-radius: 50px;
+    width: 50%;
+    height: 20%;
+    padding-bottom: 20px;
+    padding-top: -10px;
+    padding-left: 20px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-top: 200px;
+    display: none;
+}
+
+.image-01 {
+    transform: translateX(1100px);
+    margin-bottom: -100px;
+}
+
+.My-images .image-04 {
+    transform: translateX(-700px);
+    margin-bottom: -30px;
+}
+
+.imageLp {
+    transform: translate(800px);
+    margin-top: -300px;
+}
+
+.icon {
+    margin-bottom: -10px;
+}
+
+a {
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: large;
+    color: blueviolet;
+}
+
+
+a:hover {
+    border-bottom: 10px solid navy;
+}
+
+.conditions,
+.slogan {
+    text-align: center;
+}
+
+.Contact p {
+    color: grey;
+}
