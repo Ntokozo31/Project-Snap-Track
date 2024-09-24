@@ -1,5 +1,4 @@
-const mapboxToken = '{{MAPBOX_TOKEN}}';
-mapboxgl.accessToken = mapboxToken;
+mapboxgl.accessToken = 'pk.eyJ1IjoibnRva296by0yODUzIiwiYSI6ImNtMTh3bTJ4bDE5cXcydHNmZGt3cnJhcHgifQ.i-cqQWtnORllhcF2_kPxWQ';
 
 document.getElementById('Location-Btn').addEventListener('click', getLocation);
 
