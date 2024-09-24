@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoibnRva296by0yODUzIiwiYSI6ImNtMTh3bTJ4bDE5cXcydHNmZGt3cnJhcHgifQ.i-cqQWtnORllhcF2_kPxWQ';
+mapboxgl.accessToken = MAPBOX_TOKEN;
 
 document.getElementById('Location-Btn').addEventListener('click', getLocation);
 
@@ -20,7 +20,7 @@ function showPosition(position) {
     let longitude = position.coords.longitude;
     let locationText = "latitude: " + latitude +  " longitude: " + longitude;
     document.getElementById("your-location").innerHTML = locationText;
-
+    
     const userLocation = [longitude, latitude];
     map.setCenter(userLocation);
     map.setZoom(14);
@@ -52,7 +52,7 @@ let map, marker;
 
 function initMap() {
     const defaultLocation = [-26.2056, 28.0337];
-    const map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
         container:'map',
         style:'mapbox://styles/mapbox/streets-v11',
         center: defaultLocation,
