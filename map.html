@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>SnapTrack Map - Find Your Location</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link href="map-styles.css" rel="stylesheet">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body class="map-page">
+    <!-- Navigation -->
+    <nav class="navbar navbar-map">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-location-dot"></i>
+                    <span>SnapTrack</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+                <li><a href="index.html#features" class="nav-link">Features</a></li>
+                <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Map Header -->
+    <section class="map-header-section">
+        <div class="container">
+            <div class="map-header-content">
+                <h1 class="map-title">
+                    <i class="fas fa-crosshairs"></i>
+                    Find Your Location
+                </h1>
+                <p class="map-description">
+                    Click the button below to get your precise location and see it on the interactive map
+                </p>
+                <div class="location-controls">
+                    <button class="btn-primary locate-btn" id="locate-btn">
+                        <i class="fas fa-crosshairs"></i>
+                        <span>Get My Location</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button class="btn-secondary share-btn" id="share-btn" style="display: none;">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share Location</span>
+                    </button>
+                </div>
+                <div class="location-info" id="location-info" style="display: none;">
+                    <div class="info-card">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="info-content">
+                                <span class="info-label">Coordinates</span>
+                                <span class="info-value" id="coordinates-display">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-bullseye"></i>
+                            <div class="info-content">
+                                <span class="info-label">Accuracy</span>
+                                <span class="info-value" id="accuracy-display">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="info-content">
+                                <span class="info-label">Last Updated</span>
+                                <span class="info-value" id="time-display">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Container -->
+    <section class="map-section">
+        <div class="map-wrapper">
+            <div id="map" class="map-container">
+                <div class="map-loading" id="map-loading">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p>Initializing map...</p>
+                </div>
+            </div>
+            
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button class="control-btn" id="recenter-btn" title="Recenter Map" style="display: none;">
+                    <i class="fas fa-crosshairs"></i>
+                </button>
+                <button class="control-btn" id="refresh-location" title="Refresh Location">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="control-btn" id="toggle-satellite" title="Toggle Satellite View">
+                    <i class="fas fa-satellite"></i>
+                </button>
+            </div>
+
+            <!-- Location Status -->
+            <div class="location-status" id="location-status">
+                <div class="status-indicator">
+                    <i class="fas fa-circle"></i>
+                    <span>Ready to locate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+        <div class="container">
+            <div class="actions-grid">
+                <div class="action-card">
+                    <i class="fas fa-directions"></i>
+                    <h3>Get Directions</h3>
+                    <p>Navigate to your destination</p>
+                    <button class="btn-outline" onclick="getDirections()">
+                        <i class="fas fa-route"></i>
+                        Directions
+                    </button>
+                </div>
+                <div class="action-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Save Location</h3>
+                    <p>Save this location for later</p>
+                    <button class="btn-outline" onclick="saveLocation()">
+                        <i class="fas fa-bookmark"></i>
+                        Save
+                    </button>
+                </div>
+                <div class="action-card">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Share Location</h3>
+                    <p>Share with friends and family</p>
+                    <button class="btn-outline" onclick="shareLocation()">
+                        <i class="fas fa-share"></i>
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-minimal">
+        <div class="container">
+            <div class="footer-content-minimal">
+                <div class="footer-logo">
+                    <i class="fas fa-location-dot"></i>
+                    <span>SnapTrack</span>
+                </div>
+                <p>&copy; 2025 SnapTrack. All rights reserved.</p>
+                <a href="index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>
